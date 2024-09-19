@@ -35,49 +35,65 @@ export const App = () => {
 
   return (
     <>
-      <h1>学習記録一覧</h1>
-      <div className="study-list">
-        <ul>
-          {records.map((record, index) => (
-            <li key={index}>
-              <span>{record.title}</span>
-              <span> </span>
-              <span>{record.time}時間</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="study-input-form">
-        <div>
-          <label htmlFor="title">学習内容</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="学習内容を入力"
-            value={newTitle}
-            onChange={handleTitleChange}
-          />
+      <div className="container">
+        <h1 className="title">学習記録一覧</h1>
+        <div className="content">
+          <div className="study-list">
+            <h2>記録一覧</h2>
+            <ul>
+              {records.map((record, index) => (
+                <li key={index}>
+                  <span>{record.title}</span>
+                  <span> </span>
+                  <span className="time">{record.time}時間</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <div>
-          <label htmlFor="time">学習時間</label>
-          <input
-            type="number"
-            id="time"
-            name="time"
-            placeholder="学習時間を入力"
-            value={newTime}
-            onChange={handleTimeChange}
-          />
-          <span>時間</span>
+        <div className="study-input-form">
+          <div className="form-group">
+            <label htmlFor="title">学習内容</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="学習内容を入力"
+              value={newTitle}
+              onChange={handleTitleChange}
+              style={{ width: "700px" }}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="time">学習時間</label>
+            <div className="time-input">
+              <input
+                type="number"
+                id="time"
+                name="time"
+                placeholder="学習時間を入力"
+                value={newTime}
+                onChange={handleTimeChange}
+                style={{ width: "50px" }}
+              />
+              <span>時間</span>
+            </div>
+          </div>
+          <div>
+            <p style={{ fontWeight: "bold" }}>
+              入力されている学習内容：{newTitle}
+            </p>
+            <p style={{ fontWeight: "bold" }}>入力されている時間：{newTime}</p>
+          </div>
+          <button onClick={handleSubmit} className="submit-button">
+            記録を追加
+          </button>
+          <p style={{ color: "red" }}>{error}</p>
+          <p>
+            合計時間：<span style={{ color: "#007bff" }}>{totalTime}</span>
+            /1000(h)
+          </p>
         </div>
-        <div>
-          <p>入力されている学習内容：{newTitle}</p>
-          <p>入力されている時間：{newTime}</p>
-        </div>
-        <button onClick={handleSubmit}>記録を追加</button>
-        <p>{error}</p>
-        <p>合計時間：{totalTime}/1000(h)</p>
       </div>
     </>
   );
