@@ -5,3 +5,4 @@
 - 入力されていない項目があるとエラーがでる
 - 記録した勉強の時間を合計した値をみることができる
 
+[Vite + React (1).webm](https://github.com/user-attachments/assets/4da2422c-d85a-48d1-b970-d033da0e8889)
